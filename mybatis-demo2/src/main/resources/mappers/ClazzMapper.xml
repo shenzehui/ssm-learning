@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.ClazzDao">
+
+    <!--    <resultMap id="ClazzMap" type="clazz">-->
+    <!--        <id column="cid" property="classId"/>-->
+    <!--        <result column="cname" property="className"/>-->
+    <!--        <result column="cdesc" property="classDesc"/>-->
+    <!--        &lt;!&ndash;Clazz 对象的stus属性是一个List集合，需要使用collection标签&ndash;&gt;-->
+    <!--        &lt;!&ndash;collection标签 的 ofType属性声明集合中元素的类型（泛型）&ndash;&gt;-->
+    <!--&lt;!&ndash;        <collection property="stus" ofType="student">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <id column="sid" property="stuId"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <result column="sname"  property="stuName"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <result column="sage" property="stuAge"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <result column="scid" property="stuCid"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </collection>&ndash;&gt;-->
+    <!--        &lt;!&ndash;子查询&ndash;&gt;-->
+    <!--        <collection property="stus" select="com.qfedu.dao.StudentDao.queryStudentByCid" column="cid"/>-->
+    <!--    </resultMap>-->
+
+    <!--    &lt;!&ndash;子查询&ndash;&gt;-->
+    <!--    <select id="queryClazzById" resultMap="ClazzMap">-->
+    <!--        SELECT cid,cname,cdesc-->
+    <!--        FROM classes-->
+    <!--        WHERE cid = #{classId}-->
+    <!--    </select>-->
+
+    <!--    &lt;!&ndash;关联查询&ndash;&gt;-->
+    <!--&lt;!&ndash;    <select id="queryClazzById" resultMap="ClazzMap">&ndash;&gt;-->
+    <!--&lt;!&ndash;        SELECT cid,cname,cdesc,sid,sname,sage,scid&ndash;&gt;-->
+    <!--&lt;!&ndash;        FROM classes c&ndash;&gt;-->
+    <!--&lt;!&ndash;        LEFT JOIN students s&ndash;&gt;-->
+    <!--&lt;!&ndash;        on c.cid = s.scid&ndash;&gt;-->
+    <!--&lt;!&ndash;        WHERE cid = #{classId}&ndash;&gt;-->
+    <!--&lt;!&ndash;    </select>&ndash;&gt;-->
+
+
+    <resultMap id="ClazzMap" type="clazz">
+        <id column="cid" property="classId"/>
+        <result column="cname" property="className"/>
+        <result column="cdesc" property="classDesc"/>
+    </resultMap>
+
+    <select id="queryClazzById" resultMap="ClazzMap">
+        select cid, cname, cdesc
+        from classes
+        where cid = #{classId}
+    </select>
+
+
+</mapper>

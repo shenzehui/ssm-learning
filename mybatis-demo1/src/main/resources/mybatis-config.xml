@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--properties标签：1.可以定义键值对  2.可以引用属性文件-->
+    <properties resource="jdbc.properties"></properties>
+
+    <!--设置mybatis的属性-->
+    <settings>
+        <!--开启日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--二级缓存-->
+<!--        <setting name="cacheEnabled" value="true"/>-->
+        <!--启用延迟加载-->
+<!--        <setting name="lazyLoadingEnable" value="true"/>-->
+    </settings>
+
+    <!--typeAliases标签用于给实体类取别名，在映射文件中可以直接使用别名来替代实体类的全限定名-->
+    <typeAliases> <!--默认别名是类名首字母小写-->
+        <package name="com.qfedu.pojo"/>
+    </typeAliases>
+
+    <!--plugins标签，用于配置MyBatis插件（分页插件）-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
+    <!-- 在environments配置数据库连接信息 -->
+    <!-- 在environments标签中可以定义多个environment标签，每个environment标签可以定义⼀套连接配置 -->
+    <!-- default属性，用来指定使用哪个environment标签 -->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--transactionManager标签用于配置数据库管理方式
+                type="JDBC" 可以进⾏事务的提交和回滚操作
+                type="MANAGED" 依赖容器完成事务管理，本身不进行事务的提交和回滚操作 -->
+            <transactionManager type="JDBC"/>
+            <!--dataSource标签就是用来配置数据库连接信息  POOLED|UNPOOLED-->
+            <dataSource type="POOLED">
+
+                <property name="driver" value="${mysql_driver}"/>
+
+                <property name="url" value="${mysql_url}"/>
+
+                <property name="username" value="${mysql_username}"/>
+
+                <property name="password" value="${mysql_password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--mappers标签用于载入映射文件-->
+    <mappers>
+        <mapper resource="mappers/StudentMapper.xml"/>
+    </mappers>
+
+</configuration>

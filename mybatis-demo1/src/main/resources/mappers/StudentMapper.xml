@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.StudentDao">
+
+<!--    <cache type="" size="" readOnly="false"/>-->
+    <sql id="BaseSql">
+        sid, stu_num, stu_name, stu_gender, stu_age
+    </sql>
+    <!--useGeneratedKeys 设置添加操作是否需要回填生成的主键  keyProperty设置回填的主键值赋值到参数对象的哪个属性-->
+    <insert id="insertStudent" parameterType="student" useGeneratedKeys="true" keyProperty="stuId" timeout="3000">
+        /*第二种注解回填方法*/
+<!--        <selectKey keyProperty="stuId" resultType="java.lang.Integer">-->
+<!--            select last_insert_id()-->
+<!--        </selectKey>-->
+
+        insert into tb_students(stu_num, stu_name, stu_gender, stu_age)
+        values (#{stuNum}, #{stuName}, #{stuGender}, #{stuAge})
+    </insert>
+
+    <delete id="deleteStudent">
+        delete
+        from tb_students
+        where stu_num = #{stuNum}
+    </delete>
+
+    <update id="updateStudent">
+        update tb_students
+        set stu_name   = #{stuName},
+            stu_gender = #{stuGender},
+            stu_age    = #{stuAge}
+        where stu_num = #{stuNum}
+    </update>
+
+    <!--resultMap标签用于定义实体类与数据表的映射关系（ORM）-->
+    <resultMap id="BaseResultMap" type="student">
+        <id column="sid" property="stuId"/>
+        <result column="stu_num" property="stuNum"/>
+        <result column="stu_name" property="stuName"/>
+        <result column="stu_gender" property="stuGender"/>
+        <result column="stu_age" property="stuAge"/>
+    </resultMap>
+
+    <!--resultMap存在后，resultType可以省略了-->
+    <select id="listStudent" resultMap="BaseResultMap">
+        select <include refid="BaseSql"/>
+        from tb_students
+    </select>
+
+    <select id="queryStudent" resultMap="BaseResultMap">
+        select <include refid="BaseSql"/>
+        from tb_students
+        where stu_num = #{stuNum}
+    </select>
+
+    <select id="getCount" resultType="integer">
+        select count(1)
+        from tb_students
+    </select>
+
+    <select id="listStudentByPage" resultMap="BaseResultMap">
+        select <include refid="BaseSql"/>
+        from tb_students
+        <!--limit #{arg0},#{arg1}
+        limit #{param1},#{param2}-->
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="listStudentByGender" resultMap="BaseResultMap">
+        select <include refid="BaseSql"></include>
+        from tb_students
+        where stu_gender = #{gender}
+    </select>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.StudentDao">
+
+    <!--        <resultMap id="StudentMapper" type="student">-->
+    <!--            <id column="sid" property="stuId"/>-->
+    <!--            <result column="sname" property="stuName"/>-->
+    <!--            <result column="sage" property="stuAge"/>-->
+    <!--            <result column="scid" property="stuCid"/>-->
+    <!--        </resultMap>-->
+
+    <!--        <select id="queryStudentByCid" resultMap="StudentMapper">-->
+    <!--            select sid, sname, sage, scid-->
+    <!--            from students-->
+    <!--            where scid = #{cid}-->
+    <!--        </select>-->
+
+    <resultMap id="StudentMapper" type="student">
+        <id column="sid" property="stuId"/>
+        <result column="sname" property="stuName"/>
+        <result column="sage" property="stuAge"/>
+        <!--        <association property="clazz" column="scid" select="com.qfedu.dao.ClazzDao.queryClazzById"/>-->
+        <result column="cid" property="clazz.classId"/>
+        <result column="cname" property="clazz.className"/>
+        <result column="cdesc" property="clazz.classDesc"/>
+    </resultMap>
+
+
+    <!--子查询-->
+    <!--    <select id="queryStudentBySid" resultMap="StudentMapper">-->
+    <!--        select sid, sname, sage, scid-->
+    <!--        from students-->
+    <!--        where sid = #{sid}-->
+    <!--    </select>-->
+
+    <!--连接查询-->
+    <select id="queryStudentBySid" resultMap="StudentMapper">
+        SELECT sid, sname, sage, scid, cid, cname, cdesc
+        FROM students s
+        LEFT JOIN classes c
+        ON s.scid = c.cid
+        WHERE s.sid = "10001"
+    </select>
+
+    <resultMap id="StudentMap2" type="student">
+        <id column="sid" property="stuId"/>
+        <result column="sname" property="stuName"/>
+        <result column="sage" property="stuAge"/>
+    </resultMap>
+
+    <select id="queryStudentByCid" resultMap="StudentMap2">
+        select s.sid, sname, sage, scid, g.sid, cid, score
+        from students s
+        left join grades g
+        on s.sid = g.sid
+        where g.cid = #{cid}
+    </select>
+</mapper>

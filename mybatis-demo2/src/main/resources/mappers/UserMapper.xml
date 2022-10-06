@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.UserDao">
+
+    <sql id="userSql">
+        user_id
+        ,user_name,user_pwd,user_realname,user_img
+    </sql>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
+        insert into users(user_name, user_pwd, user_realname, user_img)
+        values (#{userName}, #{userPwd}, #{userRealname}, #{userImg})
+    </insert>
+
+    <resultMap id="UserMap" type="user">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_pwd" property="userPwd"/>
+        <result column="user_realname" property="userRealname"/>
+        <result column="user_img" property="userImg"/>
+        <!--association  调用DetailDao中的queryDetailByUid方法，查询参数是第一次查询出来的user_id-->
+        <association property="detail" select="com.qfedu.dao.DetailDao.queryDetailByUid" column="user_id"/>
+        <!--        <result column="detail_id" property="detail.detailId"/>-->
+        <!--        <result column="user_addr" property="detail.userAddr"/>-->
+        <!--        <result column="user_tel" property="detail.userTel"/>-->
+        <!--        <result column="user_desc" property="detail.userDesc"/>-->
+    </resultMap>
+
+    <!--子查询-->
+    <select id="queryUser" resultMap="UserMap">
+        select
+        <include refid="userSql"></include>
+        from users
+        where user_name = #{username}
+    </select>
+
+<!--        连接查询-->
+<!--        <select id="queryUser" resultMap="UserMap">-->
+<!--            SELECT  u.user_id,user_name,user_pwd,user_realname,user_img,detail_id,user_addr,user_tel,user_desc-->
+<!--            FROM users u LEFT JOIN details d on u.user_id = d.user_id-->
+<!--            WHERE u.user_name = #{username}-->
+<!--        </select>-->
+
+
+</mapper>
