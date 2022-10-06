@@ -57,7 +57,7 @@ SpringMVC对RESTful URL设计方法提供了良好的支持
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.qfedu</groupId>
+    <groupId>com.szh</groupId>
     <artifactId>springmvc-demo2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -131,7 +131,7 @@ SpringMVC对RESTful URL设计方法提供了良好的支持
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <context:annotation-config/>
-    <context:component-scan base-package="com.qfedu"/>
+    <context:component-scan base-package="com.szh"/>
 
     <!--声明mvc使用注解驱动-->
     <mvc:annotation-driven/>
@@ -169,7 +169,7 @@ SpringMVC对RESTful URL设计方法提供了良好的支持
 ##### 3.1.1 创建控制器类
 
 - 
-创建一个名为`com.qfedu.controller`的包（包需要在Spring注解扫描的范围内）
+创建一个名为`com.szh.controller`的包（包需要在Spring注解扫描的范围内）
 
 - 
 创建一个类（无需做任何的继承和实现）
@@ -869,7 +869,7 @@ public class MyDateConverter implements Converter<String, Date> {
 <bean id="converterFactory" class="org.springframework.context.support.ConversionServiceFactoryBean">
     <property name="converters">
         <set>
-            <bean class="com.qfedu.utils.MyDateConverter"/>
+            <bean class="com.szh.utils.MyDateConverter"/>
         </set>
     </property>
 </bean>
@@ -1152,7 +1152,7 @@ public class MyInterceptor implements HandlerInterceptor {
         <mvc:mapping path="/book/add"/>
         <mvc:mapping path="/student/**"/>
         <mvc:exclude-mapping path="/student/add"/>
-        <bean class="com.qfedu.interceptor.MyInterceptor"/>
+        <bean class="com.szh.interceptor.MyInterceptor"/>
     </mvc:interceptor>
 </mvc:interceptors>
 ```
@@ -1291,7 +1291,7 @@ public class MyInterceptor implements HandlerInterceptor {
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="com.qfedu"/>
+    <context:component-scan base-package="com.szh"/>
 </beans>
 ```
 
@@ -1430,7 +1430,7 @@ druid.pool.timeout=30000
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource"/>
     <property name="mapperLocations" value="classpath:mappers/*.xml"/>
-    <property name="typeAliasesPackage" value="com.qfedu.bean"/>
+    <property name="typeAliasesPackage" value="com.szh.bean"/>
     <property name="configLocation" value="classpath:mybatis-config.xml"/>
 </bean>
 ```
@@ -1442,7 +1442,7 @@ druid.pool.timeout=30000
 ```xml
 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    <property name="basePackage" value="com.qfedu.dao"/>
+    <property name="basePackage" value="com.szh.dao"/>
 </bean>
 ```
 
@@ -1499,7 +1499,7 @@ public interface UserDAO {
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qfedu.dao.UserDAO">
+<mapper namespace="com.szh.dao.UserDAO">
 
     <resultMap id="UserMap" type="user">
         <id column="user_id" property="userId"/>

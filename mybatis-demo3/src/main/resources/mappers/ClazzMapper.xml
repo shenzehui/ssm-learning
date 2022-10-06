@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qfedu.dao.ClazzDao">
+<mapper namespace="com.szh.dao.ClazzDao">
     <resultMap id="clazzMap" type="clazz">
         <id column="cid" property="classId"/>
         <result column="cname" property="className"/>
         <result column="cdesc" property="classDesc"/>
         <!--启用懒加载（延迟加载）-->
-        <collection property="stus" column="cid" select="com.qfedu.dao.StudentDao.queryStudentByCid" fetchType="lazy"/>
+        <collection property="stus" column="cid" select="com.szh.dao.StudentDao.queryStudentByCid" fetchType="lazy"/>
     </resultMap>
     <select id="queryClazzByCid" resultMap="clazzMap">
         select cid, cname, cdesc

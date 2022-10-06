@@ -119,7 +119,7 @@ fmwy(项目名称)
     <!--指定项⽬模型版本-->
     <modelVersion>4.0.0</modelVersion>
     <!--指定项⽬的标识：G 企业标识 A 项目标识 V 版本-->
-    <groupId>com.qfedu</groupId>
+    <groupId>com.szh</groupId>
     <artifactId>fmwy</artifactId>
     <version>1.0.0</version>
 
@@ -329,7 +329,7 @@ mvn deploye
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.qfedu</groupId>
+    <groupId>com.szh</groupId>
     <artifactId>maven-deom2</artifactId>
     <version>1.0.0</version>
 

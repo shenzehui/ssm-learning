@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qfedu.dao.ClazzDao">
+<mapper namespace="com.szh.dao.ClazzDao">
 
     <!--    <resultMap id="ClazzMap" type="clazz">-->
     <!--        <id column="cid" property="classId"/>-->
@@ -17,7 +17,7 @@
     <!--&lt;!&ndash;            <result column="scid" property="stuCid"/>&ndash;&gt;-->
     <!--&lt;!&ndash;        </collection>&ndash;&gt;-->
     <!--        &lt;!&ndash;子查询&ndash;&gt;-->
-    <!--        <collection property="stus" select="com.qfedu.dao.StudentDao.queryStudentByCid" column="cid"/>-->
+    <!--        <collection property="stus" select="com.szh.dao.StudentDao.queryStudentByCid" column="cid"/>-->
     <!--    </resultMap>-->
 
     <!--    &lt;!&ndash;子查询&ndash;&gt;-->

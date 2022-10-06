@@ -13,7 +13,7 @@
     </settings>
 
     <typeAliases>
-        <package name="com.qfedu.pojo"/>
+        <package name="com.szh.pojo"/>
     </typeAliases>
     
 
@@ -23,7 +23,7 @@
 
             <!--POOLED 使用MyBatis内置的连接池实现  -->
             <!--mybatis需要一个连接池工厂，这个工厂可以产生数据库连接池  PooledDataSourceFactory-->
-            <dataSource type="com.qfedu.utils.DruidDataSourceFactory">
+            <dataSource type="com.szh.utils.DruidDataSourceFactory">
                 <property name="driverClass" value="${driver}"/>
                 <property name="jdbcUrl" value="${url}"/>
                 <property name="username" value="${username}"/>

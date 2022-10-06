@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--对于一个xml文件如果作为框架的配置文件，需要遵守框架的配置规则-->
     <!--通常一个框架为了让开发者能够正确的配置，都会提供xml的规范文件(dtd\xsd)-->
-<!--    <bean id="stu" class="com.qfedu.ioc.bean.Student">-->
+<!--    <bean id="stu" class="com.szh.ioc.bean.Student">-->
 <!--        <property name="stuNum" value="1001"/>-->
 <!--        <property name="stuName" value="撒贝宁"/>-->
 <!--        <property name="stuGender" value="男"/>-->
@@ -13,7 +13,7 @@
 <!--            <bean class="java.util.Date"/>-->
 <!--        </property>-->
 <!--        <property name="clazz">-->
-<!--            <bean class="com.qfedu.ioc.bean.Clazz">-->
+<!--            <bean class="com.szh.ioc.bean.Clazz">-->
 <!--                <property name="classId" value="12"/>-->
 <!--                <property name="className" value="Java高级班"/>-->
 <!--            </bean>-->
@@ -53,7 +53,7 @@
 <!--        </property>-->
 <!--    </bean>-->
 
-<!--&lt;!&ndash;    <bean id="clazz" class="com.qfedu.ioc.bean.Clazz">&ndash;&gt;-->
+<!--&lt;!&ndash;    <bean id="clazz" class="com.szh.ioc.bean.Clazz">&ndash;&gt;-->
 <!--&lt;!&ndash;        <property name="classId" value="12"/>&ndash;&gt;-->
 <!--&lt;!&ndash;        <property name="className" value="Java高级班"/>&ndash;&gt;-->
 <!--&lt;!&ndash;    </bean>&ndash;&gt;-->
@@ -61,7 +61,7 @@
 <!--    <bean id="enterenceTime" class="java.util.Date"/>-->
 
     <!--构造器DI依赖注入-->
-    <bean id="stu" class="com.qfedu.ioc.bean.Student">
+    <bean id="stu" class="com.szh.ioc.bean.Student">
         <constructor-arg index="0" value="123"/>
         <constructor-arg index="1" value="szh"/>
         <constructor-arg index="2" value="男"/>
@@ -70,7 +70,7 @@
             <bean class="java.util.Date"/>
         </constructor-arg>
         <constructor-arg index="5">
-            <bean class="com.qfedu.ioc.bean.Clazz"/>
+            <bean class="com.szh.ioc.bean.Clazz"/>
         </constructor-arg>
         <constructor-arg index="6" value="电影，画画"/>
         <constructor-arg index="7">
@@ -81,23 +81,23 @@
     </bean>
 
     <!--scope默认是singleton（单例 且默认是饿汉式） singleton表示单例模式  prototype是非单例模式  lazy-init=true表示开启懒汉式-->
-<!--    <bean id="book" class="com.qfedu.ioc.bean.Book" scope="singleton" lazy-init="true"></bean>-->
+<!--    <bean id="book" class="com.szh.ioc.bean.Book" scope="singleton" lazy-init="true"></bean>-->
 
     <!--在bean标签中可以通过init-method属性指定当前bean的初始化方法，初始化方法在构造器执行之后执行-->
     <!--在bean标签中可以通过destroy-method属性指定当前bean的销毁方法，销毁方法在对象销毁之前执行-->
-    <bean id="book" class="com.qfedu.ioc.bean.Book" scope="prototype" init-method="init" destroy-method="destroy"></bean>
+    <bean id="book" class="com.szh.ioc.bean.Book" scope="prototype" init-method="init" destroy-method="destroy"></bean>
 
     <!--自动装配：Spring在实例化当前bean的时候从Spring容器中找到匹配的实例赋值给当期bean-->
     <!--byName 根据当期bean的属性名在Spring容器中寻找匹配的对象，如果根据Name找到了bean，但是类型不匹配则会抛出异常-->
     <!--byType 根据当前bean的属性类型在Spring容器中寻找匹配的对象，如果根据类型找到了多个bean也会抛出异常-->
-    <bean id="stu2" class="com.qfedu.ioc.bean.Student" autowire="byType"/>
+    <bean id="stu2" class="com.szh.ioc.bean.Student" autowire="byType"/>
 
     <!--这里的clazz要与Student中的属性名保持一致-->
-    <bean id="clazz2" class="com.qfedu.ioc.bean.Clazz">
+    <bean id="clazz2" class="com.szh.ioc.bean.Clazz">
 
     </bean>
 
-    <bean id="productService" class="com.qfedu.ioc.service.impl.ProductServiceImpl2"></bean>
-    <bean id="testServlet" class="com.qfedu.ioc.servlet.TestServlet" autowire="byName"></bean>
+    <bean id="productService" class="com.szh.ioc.service.impl.ProductServiceImpl2"></bean>
+    <bean id="testServlet" class="com.szh.ioc.servlet.TestServlet" autowire="byName"></bean>
 
 </beans>

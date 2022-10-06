@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qfedu.dao.UserDao">
+<mapper namespace="com.szh.dao.UserDao">
 
     <sql id="userSql">
         user_id
@@ -21,7 +21,7 @@
         <result column="user_realname" property="userRealname"/>
         <result column="user_img" property="userImg"/>
         <!--association  调用DetailDao中的queryDetailByUid方法，查询参数是第一次查询出来的user_id-->
-        <association property="detail" select="com.qfedu.dao.DetailDao.queryDetailByUid" column="user_id"/>
+        <association property="detail" select="com.szh.dao.DetailDao.queryDetailByUid" column="user_id"/>
         <!--        <result column="detail_id" property="detail.detailId"/>-->
         <!--        <result column="user_addr" property="detail.userAddr"/>-->
         <!--        <result column="user_tel" property="detail.userTel"/>-->

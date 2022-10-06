@@ -163,7 +163,7 @@ mysql driver
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qfedu.dao.StudentDao">
+<mapper namespace="com.szh.dao.StudentDao">
     <!--使用insert,update,delete,select标签写sql-->
     <insert id="insertStudent" parameterType="student">
         insert into tb_students(stu_num, stu_name, stu_gender, stu_age)
@@ -203,9 +203,9 @@ mysql driver
 ### 4.3 测试代码
 
 ```java
-package com.qfedu.dao;
+package com.szh.dao;
 
-import com.qfedu.pojo.Student;
+import com.szh.pojo.Student;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -218,7 +218,7 @@ import java.io.InputStream;
 /**
  * @Author szh
  * @Date 2022/7/26 14:54
- * @PackageName:com.qfedu.dao
+ * @PackageName:com.szh.dao
  * @ClassName: StudentDaoTest
  * @Description: TODO
  * @Version 1.0
@@ -408,7 +408,7 @@ public class StudentDaoTest {
 - MyBatisUtil
 
 ```java
-package com.qfedu.utils;
+package com.szh.utils;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -422,7 +422,7 @@ import java.io.InputStream;
 /**
  * @Author szh
  * @Date 2022/7/26 19:36
- * @PackageName:com.qfedu.utils
+ * @PackageName:com.szh.utils
  * @ClassName: MyBatisUtil
  * @Description: TODO
  * @Version 1.0
@@ -543,7 +543,7 @@ factory.openSession();/factory.openSession(false);
 **MyBatisUtil优化**
 
 ```java
-package com.qfedu.utils;
+package com.szh.utils;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -557,7 +557,7 @@ import java.io.InputStream;
 /**
  * @Author szh
  * @Date 2022/7/26 19:36
- * @PackageName:com.qfedu.utils
+ * @PackageName:com.szh.utils
  * @ClassName: MyBatisUtil
  * @Description: TODO
  * @Version 1.0
@@ -674,8 +674,8 @@ mysql_password=240518.a
 ```xml
 <!--typeAliases标签用于给实体类取别名，在映射文件中可以直接使用别名来替代实体类的全限定名-->
 <typeAliases>
-    <typeAlias type="com.qfedu.pojo.Student" alias="Student"></typeAlias>
-    <typeAlias type="com.qfedu.pojo.Book" alias="Book"></typeAlias>
+    <typeAlias type="com.szh.pojo.Student" alias="Student"></typeAlias>
+    <typeAlias type="com.szh.pojo.Book" alias="Book"></typeAlias>
 </typeAliases
 ```
 
@@ -1649,7 +1649,7 @@ public class DruidDataSourceFactory extends PooledDataSourceFactory {
 
         <!--POOLED 使用MyBatis内置的连接池实现  -->
         <!--mybatis需要一个连接池工厂，这个工厂可以产生数据库连接池  PooledDataSourceFactory-->
-        <dataSource type="com.qfedu.utils.DruidDataSourceFactory">
+        <dataSource type="com.szh.utils.DruidDataSourceFactory">
             <property name="driverClass" value="${driver}"/>
             <property name="jdbcUrl" value="${url}"/>
             <property name="username" value="${username}"/>

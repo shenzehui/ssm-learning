@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.qfedu"/>
+    <context:component-scan base-package="com.szh"/>
 
     <!--声明mvc使用注解驱动  -->
     <mvc:annotation-driven conversion-service="converterFactory"/>
@@ -48,7 +48,7 @@
     <bean id="converterFactory" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="com.qfedu.utils.MyDateConverter"/>
+                <bean class="com.szh.utils.MyDateConverter"/>
             </set>
         </property>
     </bean>

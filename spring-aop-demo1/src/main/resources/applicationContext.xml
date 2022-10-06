@@ -5,40 +5,40 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="bookDAO" class="com.qfedu.dao.BookDAOImpl"></bean>
-    <bean id="studentDAO" class="com.qfedu.dao.StudentDAOImpl"></bean>
+    <bean id="bookDAO" class="com.szh.dao.BookDAOImpl"></bean>
+    <bean id="studentDAO" class="com.szh.dao.StudentDAOImpl"></bean>
 
-    <bean id="txManager" class="com.qfedu.utils.TxManager"></bean>
-    <bean id="logManager" class="com.qfedu.utils.LogManager"></bean>
-    <bean id="bookServiceImpl" class="com.qfedu.service.BookServiceImpl"></bean>
-    <bean id="myAspect" class="com.qfedu.utils.MyAspect"></bean>
+    <bean id="txManager" class="com.szh.utils.TxManager"></bean>
+    <bean id="logManager" class="com.szh.utils.LogManager"></bean>
+    <bean id="bookServiceImpl" class="com.szh.service.BookServiceImpl"></bean>
+    <bean id="myAspect" class="com.szh.utils.MyAspect"></bean>
 
     <aop:config>
         <!--使用aop:pointcut标签声明切入点（被Spring横切的方法）  第一个"*"表示方法返回类型：切入点可以是一个方法-->
-        <aop:pointcut id="book_all" expression="execution(* com.qfedu.dao.BookDAOImpl.*(..))"/>
+        <aop:pointcut id="book_all" expression="execution(* com.szh.dao.BookDAOImpl.*(..))"/>
 
         <!--BookDAOImpl类中所有无参无返回值的方法-->
-        <aop:pointcut id="book_pc1" expression="execution(void com.qfedu.dao.BookDAOImpl.*())"/>
+        <aop:pointcut id="book_pc1" expression="execution(void com.szh.dao.BookDAOImpl.*())"/>
 
         <!--BookDAOImpl类中所有无返回值的方法-->
-        <aop:pointcut id="book_pc2" expression="execution(void com.qfedu.dao.BookDAOImpl.*(..))"/>
+        <aop:pointcut id="book_pc2" expression="execution(void com.szh.dao.BookDAOImpl.*(..))"/>
 
         <!--BookDAOImpl类中所有无参数的方法-->
-        <aop:pointcut id="book_pc3" expression="execution(* com.qfedu.dao.BookDAOImpl.*())"/>
+        <aop:pointcut id="book_pc3" expression="execution(* com.szh.dao.BookDAOImpl.*())"/>
 
         <!--BookDAOImpl类中所有方法-->
-        <aop:pointcut id="book_pc4" expression="execution(* com.qfedu.dao.BookDAOImpl.*(..))"/>
+        <aop:pointcut id="book_pc4" expression="execution(* com.szh.dao.BookDAOImpl.*(..))"/>
 
         <!--dao包中所有类中的所有方法-->
-        <aop:pointcut id="book_pc5" expression="execution(* com.qfedu.dao.*.*(..))"/>
+        <aop:pointcut id="book_pc5" expression="execution(* com.szh.dao.*.*(..))"/>
 
         <!--dao包中所有类中的insert方法-->
-        <aop:pointcut id="book_pc6" expression="execution(* com.qfedu.dao.*.insert(..))"/>
+        <aop:pointcut id="book_pc6" expression="execution(* com.szh.dao.*.insert(..))"/>
 
         <!--任意包中的任意类中的所有方法-->
         <aop:pointcut id="book_pc7" expression="execution(* *(..))"/>
 
-        <aop:pointcut id="book_insert" expression="execution(* com.qfedu.dao.BookDAOImpl.insert(..))"/>
+        <aop:pointcut id="book_insert" expression="execution(* com.szh.dao.BookDAOImpl.insert(..))"/>
 
         <!--声明TxManager为切面类-->
 <!--        <aop:aspect ref="txManager">-->

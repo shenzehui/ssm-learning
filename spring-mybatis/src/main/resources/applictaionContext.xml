@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.qfedu"/>
+    <context:component-scan base-package="com.szh"/>
 
     <!--加载druid.properties配置文件-->
     <context:property-placeholder location="classpath:druid.properties"/>
@@ -43,7 +43,7 @@
         <!--必须：配置映射文件的路径-->
         <property name="mapperLocations" value="classpath:mappers/*Mapper.xml"/>
         <!--可选：配置需要定义别名的实体类的包-->
-        <property name="typeAliasesPackage" value="com.qfedu.pojo"/>
+        <property name="typeAliasesPackage" value="com.szh.pojo"/>
         <!--可选：MyBatis主配置文件中的额外配置，例如开启二级缓存-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
@@ -53,7 +53,7 @@
     <!--加载dao包中的所有DAO接口，通过sqlSessionFactory获取SqlSession,然后创建所有DAO接口对象，存储在Spring容器-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.qfedu.dao"/>
+        <property name="basePackage" value="com.szh.dao"/>
     </bean>
 
     <!--基于xml配置事务-->
@@ -86,7 +86,7 @@
     &lt;!&ndash;3.将事务管理策略以AOP配置 应用于Service操作方法&ndash;&gt;
     <aop:config>
         &lt;!&ndash;定义切入点&ndash;&gt;
-        <aop:pointcut id="crud" expression="execution(* com.qfedu.service.*.*(..))"/>
+        <aop:pointcut id="crud" expression="execution(* com.szh.service.*.*(..))"/>
         &lt;!&ndash;添加事务管理策略&ndash;&gt;
         <aop:advisor advice-ref="txAdvice" pointcut-ref="crud"/>
     </aop:config>-->

@@ -19,7 +19,7 @@
 
     <!--typeAliases标签用于给实体类取别名，在映射文件中可以直接使用别名来替代实体类的全限定名-->
     <typeAliases> <!--默认别名是类名首字母小写-->
-        <package name="com.qfedu.pojo"/>
+        <package name="com.szh.pojo"/>
     </typeAliases>
 
     <!--plugins标签，用于配置MyBatis插件（分页插件）-->

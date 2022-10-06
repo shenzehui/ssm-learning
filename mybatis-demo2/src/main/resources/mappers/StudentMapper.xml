@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qfedu.dao.StudentDao">
+<mapper namespace="com.szh.dao.StudentDao">
 
     <!--        <resultMap id="StudentMapper" type="student">-->
     <!--            <id column="sid" property="stuId"/>-->
@@ -21,7 +21,7 @@
         <id column="sid" property="stuId"/>
         <result column="sname" property="stuName"/>
         <result column="sage" property="stuAge"/>
-        <!--        <association property="clazz" column="scid" select="com.qfedu.dao.ClazzDao.queryClazzById"/>-->
+        <!--        <association property="clazz" column="scid" select="com.szh.dao.ClazzDao.queryClazzById"/>-->
         <result column="cid" property="clazz.classId"/>
         <result column="cname" property="clazz.className"/>
         <result column="cdesc" property="clazz.classDesc"/>

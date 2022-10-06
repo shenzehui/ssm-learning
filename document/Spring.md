@@ -180,7 +180,7 @@ public class Student {
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--通过bean将实体类配置给Spring进行管理,id表示实体类的唯一表示-->
-    <bean id="stu" class="com.qfedu.ioc.bean.Student">
+    <bean id="stu" class="com.szh.ioc.bean.Student">
         <property name="stuNum" value="10002"/>
         <property name="stuName" value="李斯"/>
         <property name="stuGender" value="⼥"/>
@@ -213,8 +213,8 @@ Student student2 = (Student) context.getBean("stu");
 
 ```xml
 <!--通过bean将实体类配置给Spring进行管理,id表示实体类的唯一表示-->
-<bean id="stu" class="com.qfedu.ioc.bean.Student"></bean>
-<bean id="book" class="com.qfedu.ioc.bean.Book"></bean>
+<bean id="stu" class="com.szh.ioc.bean.Student"></bean>
+<bean id="book" class="com.szh.ioc.bean.Book"></bean>
 ```
 
 ##### 2.3.2 DI
@@ -223,9 +223,9 @@ Student student2 = (Student) context.getBean("stu");
 
 
 ```xml
-<bean id="clazz" class="com.qfedu.ioc.bean.Clazz"></bean>
+<bean id="clazz" class="com.szh.ioc.bean.Clazz"></bean>
 <!--通过bean将实体类配置给Spring进行管理,id表示实体类的唯一表示-->
-<bean id="stu" class="com.qfedu.ioc.bean.Student" autowire="byName">
+<bean id="stu" class="com.szh.ioc.bean.Student" autowire="byName">
     <property name="stuNum" value="10001"/>
 </bean>
 ```
@@ -254,7 +254,7 @@ Student student2 = (Student) context.getBean("stu");
 
 ```xml
 <!--通过bean将实体类配置给Spring进⾏管理,id表示实体类的唯一表示-->
-<bean id="stu" class="com.qfedu.ioc.bean.Student" autowire="byName">
+<bean id="stu" class="com.szh.ioc.bean.Student" autowire="byName">
     <!-- 简单类型 -->
     <property name="stuNum" value="10001"/>
     <property name="stuAge" value="12"/>
@@ -269,7 +269,7 @@ Student student2 = (Student) context.getBean("stu");
 
 ```xml
 <bean id="date" class="java.util.Date"></bean>
-<bean id="stu" class="com.qfedu.ioc.bean.Student" >
+<bean id="stu" class="com.szh.ioc.bean.Student" >
     <!--日期类型-->
     <property name="enterenceTime" ref="date"/>
 </bean>
@@ -278,7 +278,7 @@ Student student2 = (Student) context.getBean("stu");
 - 方法二：在property标签中添加子标签bean来指定对象
 
 ```xml
-<bean id="stu" class="com.qfedu.ioc.bean.Student" >
+<bean id="stu" class="com.szh.ioc.bean.Student" >
     <!--日期类型-->
     <property name="enterenceTime">
         <bean class="java.util.Date"/>
@@ -291,11 +291,11 @@ Student student2 = (Student) context.getBean("stu");
 - 方法一：
 
 ```xml
-<bean id="cla" class="com.qfedu.ioc.bean.Clazz">
+<bean id="cla" class="com.szh.ioc.bean.Clazz">
     <property name="classId" value="2010"/>
     <property name="className" value="Java2010"/>
 </bean>
-<bean id="stu" class="com.qfedu.ioc.bean.Student">
+<bean id="stu" class="com.szh.ioc.bean.Student">
     <!--自定义对象类型-->
     <property name="clazz" ref="cla"/>
 </bean>
@@ -304,10 +304,10 @@ Student student2 = (Student) context.getBean("stu");
 - 方法二：
 
 ```xml
-<bean id="stu" class="com.qfedu.ioc.bean.Student">
+<bean id="stu" class="com.szh.ioc.bean.Student">
     <!-- ⾃定义对象类型-->
     <property name="clazz">
-        <bean class="com.qfedu.ioc.bean.Clazz">
+        <bean class="com.szh.ioc.bean.Clazz">
             <property name="classId" value="2010"/>
             <property name="className" value="Java2010"/>
         </bean>
@@ -339,10 +339,10 @@ Student student2 = (Student) context.getBean("stu");
 ```xml
 <property name="hobbies" >
     <list>
-        <bean class="com.qfedu.ioc.bean.Book"/>
-        <bean class="com.qfedu.ioc.bean.Book"/>
-        <bean class="com.qfedu.ioc.bean.Book"/>
-        <bean class="com.qfedu.ioc.bean.Book"/>
+        <bean class="com.szh.ioc.bean.Book"/>
+        <bean class="com.szh.ioc.bean.Book"/>
+        <bean class="com.szh.ioc.bean.Book"/>
+        <bean class="com.szh.ioc.bean.Book"/>
     </list>
 </property>
 ```
@@ -426,7 +426,7 @@ public class Student {
 
 ```xml
 <bean id="date" class="java.util.Date"></bean>
-<bean id="stu" class="com.qfedu.ioc.bean.Student">
+<bean id="stu" class="com.szh.ioc.bean.Student">
     <constructor-arg index="0" value="10001"/> <!--字符串类型-->
     <constructor-arg index="2" value="⼥"/>
     <constructor-arg index="1" value="张三"/>
@@ -434,7 +434,7 @@ public class Student {
     <constructor-arg index="4" value="62.5"/>
     <constructor-arg index="5" ref="date"/> <!--对象类型-->
     <constructor-arg index="6"> <!--对象类型-->
-        <bean class="com.qfedu.ioc.bean.Clazz"></bean>
+        <bean class="com.szh.ioc.bean.Clazz"></bean>
     </constructor-arg>
 </bean
 ```
@@ -458,7 +458,7 @@ public class Student{
 ```
 
 ```xml
-<bean id="stu1" class="com.qfedu.ioc.bean.Student">
+<bean id="stu1" class="com.szh.ioc.bean.Student">
     <constructor-arg index="0">
         <list>
             <value>11</value>
@@ -505,13 +505,13 @@ public class Student{
 - 单例
 
 ```xml
-<bean id="book" class="com.qfedu.ioc.bean.Book" scope="singleton" lazy-init="true"></bean
+<bean id="book" class="com.szh.ioc.bean.Book" scope="singleton" lazy-init="true"></bean
 ```
 
 - 多例
 
 ```xml
-<bean id="book" class="com.qfedu.ioc.bean.Book" scope="prototype"></bean>
+<bean id="book" class="com.szh.ioc.bean.Book" scope="prototype"></bean>
 ```
 
 ### 2.6 Bean的声明周期方法
@@ -540,7 +540,7 @@ public class Book {
 - Spring配置文件
 
 ```xml
-<bean id="book" class="com.qfedu.ioc.bean.Book" scope="prototype" init-method="init" destroy-method="destroy"></bean>
+<bean id="book" class="com.szh.ioc.bean.Book" scope="prototype" init-method="init" destroy-method="destroy"></bean>
 ```
 
 ### 2.7 自动装配
@@ -555,17 +555,17 @@ public class Book {
 
 ```xml
 <!--这里的id要与Student中的属性名保持一致-->
-<bean id="clazz" class="com.qfedu.ioc.bean.Clazz"></bean>
+<bean id="clazz" class="com.szh.ioc.bean.Clazz"></bean>
 
-<bean id="stu2" class="com.qfedu.ioc.bean.Student" autowire="byName"></bean>
+<bean id="stu2" class="com.szh.ioc.bean.Student" autowire="byName"></bean>
 ```
 
 - byType
 
 ```xml
-<bean id="clazz2" class="com.qfedu.ioc.bean.Clazz"></bean>
+<bean id="clazz2" class="com.szh.ioc.bean.Clazz"></bean>
 
-<bean id="stu2" class="com.qfedu.ioc.bean.Student" autowire="byType"></bean>
+<bean id="stu2" class="com.szh.ioc.bean.Student" autowire="byType"></bean>
 ```
 
 ### 2.8 SpringIoC 工作原理
@@ -609,7 +609,7 @@ public class Book {
     <!--声明使用注解配置-->
     <context:annotation-config/>
     <!--声明Spring工厂注解的扫描范围-->
-    <context:component-scan base-package="com.qfedu.bean"/>
+    <context:component-scan base-package="com.szh.bean"/>
 
 </beans>
 ```
@@ -935,13 +935,13 @@ public class TxManager {
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="bookDAO" class="com.qfedu.dao.BookDAOImpl"></bean>
-    <bean id="studentDAO" class="com.qfedu.dao.StudentDAOImpl"></bean>
+    <bean id="bookDAO" class="com.szh.dao.BookDAOImpl"></bean>
+    <bean id="studentDAO" class="com.szh.dao.StudentDAOImpl"></bean>
 
-    <bean id="txManager" class="com.qfedu.utils.TxManager"></bean>
+    <bean id="txManager" class="com.szh.utils.TxManager"></bean>
     <aop:config>
         <!--声明切入点（被Spring横切的方法）  第一个"*"表示方法返回类型-->
-        <aop:pointcut id="book_all" expression="execution(* com.qfedu.dao.BookDAOImpl.*(..))"/>
+        <aop:pointcut id="book_all" expression="execution(* com.szh.dao.BookDAOImpl.*(..))"/>
         <!--声明TxManager为切面类-->
         <aop:aspect ref="txManager">
             <!--通知-->
@@ -965,25 +965,25 @@ AOP开发步骤 ：
 
 ```xml
 <!--使用aop:pointcut标签声明切入点（被Spring横切的方法）  第一个"*"表示方法返回类型：切入点可以是一个方法-->
-<aop:pointcut id="book_all" expression="execution(* com.qfedu.dao.BookDAOImpl.*(..))"/>
+<aop:pointcut id="book_all" expression="execution(* com.szh.dao.BookDAOImpl.*(..))"/>
 
 <!--BookDAOImpl类中所有无参无返回值的方法-->
-<aop:pointcut id="book_pc1" expression="execution(void com.qfedu.dao.BookDAOImpl.*())"/>
+<aop:pointcut id="book_pc1" expression="execution(void com.szh.dao.BookDAOImpl.*())"/>
 
 <!--BookDAOImpl类中所有无返回值的方法-->
-<aop:pointcut id="book_pc2" expression="execution(void com.qfedu.dao.BookDAOImpl.*(..))"/>
+<aop:pointcut id="book_pc2" expression="execution(void com.szh.dao.BookDAOImpl.*(..))"/>
 
 <!--BookDAOImpl类中所有无参数的方法-->
-<aop:pointcut id="book_pc3" expression="execution(* com.qfedu.dao.BookDAOImpl.*())"/>
+<aop:pointcut id="book_pc3" expression="execution(* com.szh.dao.BookDAOImpl.*())"/>
 
 <!--BookDAOImpl类中所有方法-->
-<aop:pointcut id="book_pc4" expression="execution(* com.qfedu.dao.BookDAOImpl.*(..))"/>
+<aop:pointcut id="book_pc4" expression="execution(* com.szh.dao.BookDAOImpl.*(..))"/>
 
 <!--dao包中所有类中的所有方法-->
-<aop:pointcut id="book_pc5" expression="execution(* com.qfedu.dao.*.*(..))"/>
+<aop:pointcut id="book_pc5" expression="execution(* com.szh.dao.*.*(..))"/>
 
 <!--dao包中所有类中的insert方法-->
-<aop:pointcut id="book_pc6" expression="execution(* com.qfedu.dao.*.insert(..))"/>
+<aop:pointcut id="book_pc6" expression="execution(* com.szh.dao.*.insert(..))"/>
 
 <!--任意包中的任意类中的所有方法-->
 <aop:pointcut id="book_pc7" expression="execution(* *(..))"/>
@@ -1047,7 +1047,7 @@ public class MyAspect {
 
 ```xml
 <aop:config>
-    <aop:pointcut id="book_insert" expression="execution(* com.qfedu.dao.BookDAOImpl.insert(..))"/>
+    <aop:pointcut id="book_insert" expression="execution(* com.szh.dao.BookDAOImpl.insert(..))"/>
 
     <aop:aspect ref="myAspect">
         <!--aop:before 前置通知，切入到指定切入点之前-->
@@ -1096,7 +1096,7 @@ public class MyAspect {
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config></context:annotation-config>
-    <context:component-scan base-package="com.qfedu"/>
+    <context:component-scan base-package="com.szh"/>
 
     <!--基于注解配置的aop代理-->
     <aop:aspectj-autoproxy/>
@@ -1111,7 +1111,7 @@ public class MyAspect {
 public class TransactionManager {
 
     //切入点方法定义
-    @Pointcut("execution(* com.qfedu.dao.*.*(..))")
+    @Pointcut("execution(* com.szh.dao.*.*(..))")
     public void pc1(){}
 
 
@@ -1293,7 +1293,7 @@ druid.pool.timeout=30000
     <!--必须：配置映射文件的路径-->
     <property name="mapperLocations" value="classpath:mappers/*Mapper.xml"/>
     <!--可选：配置需要定义别名的实体类的包-->
-    <property name="typeAliasesPackage" value="com.qfedu.pojo"/>
+    <property name="typeAliasesPackage" value="com.szh.pojo"/>
     <!--可选：MyBatis主配置文件中的额外配置，例如开启二级缓存-->
     <property name="configLocation" value="classpath:mybatis-config.xml"/>
 </bean>
@@ -1307,7 +1307,7 @@ druid.pool.timeout=30000
 <!--加载dao包中的所有DAO接口，通过sqlSessionFactory获取SqlSession,然后创建所有DAO接口对象，存储在Spring容器-->
 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    <property name="basePackage" value="com.qfedu.dao"/>
+    <property name="basePackage" value="com.szh.dao"/>
 </bean>
 ```
 
@@ -1358,7 +1358,7 @@ propagation 设置事务的传播机制
 <!--3.将事务管理策略以AOP配置 应用于Service操作方法-->
 <aop:config>
     <!--定义切入点-->
-    <aop:pointcut id="crud" expression="execution(* com.qfedu.service.*.*(..))"/>
+    <aop:pointcut id="crud" expression="execution(* com.szh.service.*.*(..))"/>
     <!--添加事务管理策略-->
     <aop:advisor advice-ref="txAdvice" pointcut-ref="crud"/>
 </aop:config>
@@ -1371,7 +1371,7 @@ propagation 设置事务的传播机制
 ```xml
 <!--使用注解进行事务管理前提是IoC需要进行注解配置-->
 <context:annotation-config/>
-<context:component-scan base-package="com.qfedu"/>
+<context:component-scan base-package="com.szh"/>
 
 <!--基于注解配置事务-->
 <!--1.将spring提供的事务管理类配置给Spring容器-->
